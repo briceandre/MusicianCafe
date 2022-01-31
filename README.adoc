@@ -1,0 +1,78 @@
+Bienvenue sur Musician Cafe
+---------------------------
+
+English version : https://github.com/briceandre/MusicianCafe/blob/master/README-en.adoc
+
+Ce logiciel contient l'ensemble du code source utilisé sur le front-end du site https://www.musician.cafe
+
+Ce site vous permet:
+
+* De gérer l'ensemble de votre librairie musicale en ligne
+* D'afficher vos partitions sur une tablette, en vous simplifiant le défilement des pages pendant que vous jouez
+* De vous enregistrer pendant que vous jouez
+* De rejouer vos enregistrements. Ceci est pratique pour enregistrer un instrument, et le rejouer pendant que vous jouez un autre instrument. Vous avez également la possibilité : 
+** de changer la vitesse de rejeu de votre enregistrement
+** de changer le pitch de rejeu de votre enregistrement
+* D'importer des fichiers musicaux (youtube, CD, etc.) et de les jouer au rythme et au pitch souhaité pendant que vous jouez
+* D'importer des partitions au format Music-XML. Une fois importée, vous pouvez:
+** Créer votre propre partition en sélectionnant les instruments à afficher
+** Transposer la partition
+** générer automatiquement un flux audio avec les instruments de votre choix. Pratique pour vous accompagner pendant que vous jouez !
+* De partager des partitions et des enregistrements avec d'autres musiciens
+* De partager des enregistrements avec toute la communauté
+* Quelques utilitaires : 
+** Un métronome
+** Un accordeur chromatique
+
+
+Le code complet tournant sur le site web est téléchargeable sur ce dépot, sous licence MIT.
+
+Si vous souhaitez contribuer, n'hésitez pas à proposer vos pull-request !
+
+Matériel nécessaire pour l'utilisation en pupitre électronique
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+J'ai installé le site sur deux tablettes : une au format d'une page A4, et une au format de deux pages A4. J'ai également développé un bouton permettant le défilement aisé des pages. Fixé en dessous du clavier d'un piano, il peut s'actionner avec le genou, permettant de tourner les pages sans s'arrêter de jouer.
+
+Si vous voulez plus d'informations pour installer le même setup chez vous, n'hésitez pas à me contacter !
+
+Comment débuter la programmation ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Si vous n'avez pas envie de programmer, mais juste d'utiliser le service, vous devriez directement aller à l'adresse https://www.musician.cafe et vous enregistrer. Le site web est gratuit !
+
+Si vous souhaitez télécharger l'application et la modifier, vous aurez besoin d'un back-end compatible. L'ensemble des services nécessaires est décrit dans le wsdl présent dans les sources.
+
+Vous pouvez exécuter vos sources modifiées en utilisant le backend du site officiel https://www.musician.cafe . Pour ce faire, vous pouvez utiliser le serveur HTTP proxy fourni dans le dépôt. Exécutez simplement le script python fourni dans l'archive (avec le CWD pointant sur le répertoire racine du dépot), et vous pourrez accéder à votre site local à l'adresse http://localhost:5000 .
+
+Il y a également un backend dédié pour les tests. Si vous souhaitez y accéder, contactez-moi !
+
+License
+~~~~~~~
+
+Ce logiciel est distribué sous license MIT
+
+
+Crédits
+~~~~~~~
+
+Ce projet utilise les ressources suivantes : 
+
+* Opus Stream Decoder : https://www.npmjs.com/package/opus-stream-decoder
+* OpusEnc : https://github.com/Rillke/opusenc.js?files=1
+* Opus-Recorder : https://github.com/chris-rudmin/opus-recorder
+* PhaseVocoder : https://github.com/echo66/PhaseVocoderJS
+* CKEditor : https://ckeditor.com/
+* FabricJS : http://fabricjs.com/
+* gettext-js : http://code.google.com/p/gettext-js
+* JQuery : https://jquery.com
+* JQueryMobile : https://jquerymobile.com/
+* OpenSheetMusicDisplay : https://opensheetmusicdisplay.org/
+* OSMD-Transpose
+* PDF.js : https://mozilla.github.io/pdf.js/
+* js-cookie
+* JSZip : http://stuartk.com/jszip
+* NoSleep : https://github.com/richtr/NoSleep.js
+* RequireJS : https://github.com/requirejs/
+* UnderscoreJS : https://underscorejs.org
+

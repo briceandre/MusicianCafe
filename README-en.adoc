@@ -1,0 +1,77 @@
+Welcome on Musician Cafe
+---------------------------
+
+Version française : https://github.com/briceandre/MusicianCafe/blob/master/README.adoc
+
+This repository contains the full source code used on front-end of site https://www.musician.cafe
+
+This website allows you to:
+
+* Manage your whole musical score library
+* Display your scores on a tablet, and helps you turning the pages while you are playing your instrument
+* Perform audio recording while you play
+* Replay your audio records. This will allow you to record one instrument voice, and replay it while you are playing another voice. You will also be able : 
+** to change the speed of the audio replay
+** to change the picth of the audio replay.
+* To import audio files (youtube, CD, etc.) and to replay them at chosen speed and pitch while you are playing the score
+* To import scores at Music-XML format. Once importer, you will be able:
+** To create your own scores by selecting the instruments to display
+** To Transpose the score
+** To automatically generate an audio stream with the instruments of your choice.
+* To share scores and audio records with other musicians
+* To share audio records with the whole community
+* Some utilities : 
+** A metronome
+** a chromatic tuner
+
+The whole code running on the website is available in this repository, under MIT licence.
+
+If you want to contribute, do not hesitate to propose your pull-request !
+
+Needed HW to display your scores when playing your insrument
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I have installed this applications on two tablets : one of the size of an A4 sheet, and one of the size of 2 A4 sheets. I also developped a button allowing to easily turn the pages while you are playing : attached under the piano keyboard, it allows turning the pages with the knee, allowing turning the pages without stopping playing.
+
+If you want more information on how to install this setup at home, do not hesitate to contact me !
+
+How to start programming ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are not a developper, and just want to use this service, you should probably go to  https://www.musician.cafe and register your account. The website is free !
+
+If your want to download the application and modify it, you will need a compatible back-end. All needed services are described in provided wsdl.
+
+You can execute your modified sources locally on your laptop by using the official backend of https://www.musician.cafe website. To do so, you can use the HTTP proxy server provided in the repository. Simply execute the python script (with the CWD pointing to the root directory of your local copy of the repository). You can now access your local website at address http://localhost:5000 .
+
+There is also a backend dedicated for tests. If you want to access it, contact me !
+
+Licence
+~~~~~~~
+
+This SW is released under MIT licence.
+
+
+Credits
+~~~~~~~
+
+This project uses the following resources : 
+
+* Opus Stream Decoder : https://www.npmjs.com/package/opus-stream-decoder
+* OpusEnc : https://github.com/Rillke/opusenc.js?files=1
+* Opus-Recorder : https://github.com/chris-rudmin/opus-recorder
+* PhaseVocoder : https://github.com/echo66/PhaseVocoderJS
+* CKEditor : https://ckeditor.com/
+* FabricJS : http://fabricjs.com/
+* gettext-js : http://code.google.com/p/gettext-js
+* JQuery : https://jquery.com
+* JQueryMobile : https://jquerymobile.com/
+* OpenSheetMusicDisplay : https://opensheetmusicdisplay.org/
+* OSMD-Transpose
+* PDF.js : https://mozilla.github.io/pdf.js/
+* js-cookie
+* JSZip : http://stuartk.com/jszip
+* NoSleep : https://github.com/richtr/NoSleep.js
+* RequireJS : https://github.com/requirejs/
+* UnderscoreJS : https://underscorejs.org
+

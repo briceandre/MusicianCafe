@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+   <head>
+
+      <title>Musician-Cafe</title>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=9" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="gettext" lang="fr" href="/locale/fr.po" />
+
+      <link rel="stylesheet" href="/css/JQM/themes/default/jquery.mobile.css">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/icon-pack.css">
+      <link rel="stylesheet" href="/css/jauge.css">
+
+      <script src="/js/ckeditor5/ckeditor.js"></script>
+
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+      <script src="/js/jquery/jquery.min.js" defer></script>
+
+      <script src="/js/jquery/jquery.mobile.min.js" defer></script>
+
+      <script src="/js/audio/opus-recorder/recorder.min.js" defer></script>
+
+      <script src="/js/pdf.js/pdf.js" defer></script>
+      <script src="/js/pdf.js/pdf.worker.js" defer></script>
+
+      <script src="/js/MusicXML/opensheetmusicdisplay.min.js"></script>
+
+      <script src="/js/fabric.js/fabric.js" defer></script>
+
+      <!--   BEGIN COMPRESSED PART  -->
+
+      <script src="/js/audio/PhaseVocoder/cbuffer.js" defer></script>
+      <script src="/js/audio/PhaseVocoder/dsp.js" defer></script>
+      <script src="/js/audio/PhaseVocoder/PhaseVocoderCodec.js" defer></script>
+      <script src="/js/audio/PhaseVocoder/PhaseVocoder.js" defer></script>
+
+      <!--   END OF COMPRESSED PART  -->
+
+      <!--   BEGIN MANGLED PART  -->
+
+      <script type="text/javascript" src="/js/gettext/gettext.js"></script>
+
+      <script src="/js/audio/config.js" defer></script>
+
+      <script src="/js/audio/Opus/worker/OpusFileCache.js" defer></script>
+      <script src="/js/audio/Opus/Opus.js" defer></script>
+
+      <script src="/js/audio/AudioPlayer.js" defer></script>
+
+      <script src="/js/soap/cxf-utils.js" defer></script>
+      <script src="/js/soap/MusicianCafe.js" defer></script>
+      <script src="/js/soap/MusicianCafeBinder.js" defer></script>
+
+      <script src="/js/utilities/NavigationHistory.js" defer></script>
+      <script src="/js/utilities/utilities.js" defer></script>
+      <script src="/js/utilities/NoSleep.js" defer></script>
+      <script src="/js/utilities/sha256.js" defer></script>
+      <script src="/js/utilities/js.cookie.js" defer></script>
+      <script src="/js/utilities/jszip.js" defer></script>
+
+      <script src="/js/pages/PresentationPage.js" defer></script>
+      <script src="/js/pages/MainPage.js" defer></script>
+      <script src="/js/pages/SelectOwnPage.js" defer></script>
+      <script src="/js/pages/DisplaySamplePage.js" defer></script>
+      <script src="/js/pages/SelectByComposerPage.js" defer></script>
+      <script src="/js/pages/DisplayComposerDetailsPage.js" defer></script>
+      <script src="/js/pages/DisplayPieceDetailsPage.js" defer></script>
+      <script src="/js/pages/AcquireSamplePage.js" defer></script>
+      <script src="/js/pages/LoadSamplePage.js" defer></script>
+      <script src="/js/pages/LoadPartitionPage.js" defer></script>
+      <script src="/js/pages/LoginPage.js" defer></script>
+      <script src="/js/pages/SelectPartitionScrollingPage.js" defer></script>
+      <script src="/js/pages/DisplayScorePage.js" defer></script>
+      <script src="/js/pages/tunerPage.js" defer></script>
+      <script src="/js/pages/EditScoreAnnotationsPage.js" defer></script>
+
+      <script src='/js/MusicXML/osmd_transpose.js'></script>
+      <script src='/js/MusicXML/blob-stream.js'></script>
+      <script src='/js/MusicXML/pdfkit.standalone.js'></script>
+      <script src='/js/MusicXML/MusicXML.js'></script>
+
+      <script src="/js/main.js" defer></script>
+
+      <!--  END MANGLED PART  -->
+
+      <script src="/js/MusicXML/note-parser.js" defer></script>
+
+      <script src='/js/MusicXML/music-xml-player.min.js' defer></script>
+
+      <script src="/js/utilities/require.js" defer></script>
+
+      <script type="text/javascript" defer>
+
+         window.music_play_js_version=1;
+         window.music_play_debug=true;
+         window.music_play_test_proxy='http://localhost:5000';
+
+      </script>
+
+   </head>
+
+   <body>
+
+      <div id="alert-popup" data-theme="a" style='display: none' data-position-to="window">
+         <p id="alert-message"></p>
+         <a href="#" data-rel="back" data-role="button" data-theme="a" class="ui-btn-right">OK</a>
+      </div>
+
+
+      <div id="main_page" data-role="page" class="jqm-demos jqm-home">
+
+
+        <div id="main-header" data-role="toolbar" data-type="header" style="overflow:hidden;">
+            <div class="ui-toolbar-header-button-left">
+            <a id="show-user-info" style="display:none" href="#user-info" class="ui-button ui-button-inline ui-mini ui-corner-all"><span class="ui-icon ui-icon-user"></span></a>
+            <a id="go-back" style="display:none" class="ui-button ui-button-inline ui-mini ui-corner-all"><span class="ui-icon ui-icon-arrow-l"></span></a>
+            </div>
+            <h1><span id="title"></span></h1>
+            <a id="show-param-info" style="display:none" href="#param-info" class="ui-toolbar-header-button-right ui-button ui-button-inline ui-mini ui-corner-all"><span class="ui-icon ui-icon-gear"></span></a>
+         </div><!-- /header -->
+
+         <div id="main_page_content" role="main" class="ui-content jqm-content">
+
+            <p>Loading....</p>
+
+         </div>
+
+
+         <div data-role="panel" id="user-info" data-position="left" data-display="overlay" data-theme='a'>
+         </div><!-- /panel -->
+         <div data-role="panel" id="param-info" data-position="right" data-display="overlay" data-theme='a'>
+         <p>TODO</p>
+         </div><!-- /panel -->
+      </div>
+
+
+      <div id='recaptcha' class="g-recaptcha"
+          data-sitekey="6LeYjiYUAAAAAANzHLdyYZujqRGAbO693-ifJJxi"
+          data-callback="onGreCaptchaValidated"
+          data-size="invisible"></div>
+
+
+   </body>
+
+</html>

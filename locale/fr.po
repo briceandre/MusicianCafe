@@ -1,0 +1,95 @@
+# HEADER.
+# This file is borrowed from official gettext unit tests ( http://gettext.cvs.sourceforge.net/*checkout*/gettext/gettext-0.11.5-w32/tests/msgfilter-2 )
+msgid ""
+msgstr ""
+"Project-Id-Version: MusicPlay\n"
+"POT-Creation-Date: 2021-01-28 17:12+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../js\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: pages/AcquireSamplePage.js:19
+msgid "Nouvel echantillon"
+msgstr "Nouvel échantillon"
+
+#: pages/AcquireSamplePage.js:26
+msgid "Veuillez entrer le nom de l'echantillon : "
+msgstr "Veuillez entrer le nom de l'échantillon : "
+
+#: pages/AcquireSamplePage.js:35
+msgid "Votre echantillon a correctement ete enregistre"
+msgstr "Votre échantillon a correctement été enregistré"
+
+#: pages/AcquireSamplePage.js:39
+msgid "Une erreur est survenue pendant l'enregistrement !"
+msgstr "Une erreur est survenue pendant l'enregistrement !"
+
+#: pages/AcquireSamplePage.js:46
+msgid "Enregistrer"
+msgstr "Enregistrer"
+
+#: pages/AcquireSamplePage.js:47
+msgid "Stop"
+msgstr "Stop"
+
+#: pages/DisplayComposerDetailsPage.js:18 pages/DisplayPieceDetailsPage.js:18
+#: pages/SelectByComposerPage.js:19
+msgid "Ajouter"
+msgstr "Ajouter"
+
+#: pages/DisplayComposerDetailsPage.js:34
+msgid "Veuillez entrer le nom de la piece : "
+msgstr "Veuillez entrer le nom de la pièce : "
+
+#: pages/DisplayComposerDetailsPage.js:45
+msgid "Cette piece existe deja !"
+msgstr "Cette pièce existe déjà !"
+
+#: pages/DisplayPieceDetailsPage.js:19
+msgid "Charger"
+msgstr "Charger"
+
+#: pages/DisplaySamplePage.js:24
+msgid "Demarrer"
+msgstr "Démarrer"
+
+#: pages/DisplaySamplePage.js:25
+msgid "Reprendre"
+msgstr "Reprendre"
+
+#: pages/DisplaySamplePage.js:26
+msgid "Arreter"
+msgstr "Arrêter"
+
+#: pages/DisplaySamplePage.js:29
+msgid "Veuillez cliquer pour lancer la diffusion"
+msgstr "Veuillez cliquer pour lancer la diffusion"
+
+#: pages/MainPage.js:11 pages/SelectOwnPage.js:11
+msgid "Mes enregistrements"
+msgstr "Mes enregistrements"
+
+#: pages/MainPage.js:12
+msgid "Par Compositeur"
+msgstr "Par Compositeur"
+
+#: pages/SelectByComposerPage.js:10
+msgid "Compositeurs"
+msgstr "Compositeurs"
+
+#: pages/SelectByComposerPage.js:36
+msgid "Veuilez entrer le nom du compositeur : "
+msgstr "Veuilez entrer le nom du compositeur : "
+
+#: pages/SelectByComposerPage.js:47
+msgid "Le compositeur existe deja !"
+msgstr "Le compositeur existe déjà !"

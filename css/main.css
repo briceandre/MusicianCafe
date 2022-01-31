@@ -1,0 +1,160 @@
+#folder-select_popup-popup,
+#add-sample-select-folder_popup-popup,
+#record-sample-select-folder_popup-popup
+{
+   width: 80%;
+   left: auto;
+   right: 0;
+}
+
+.pdf-cursor {
+    position: absolute;
+    background-color: rgba(201, 76, 76, 0.0);
+    z-index: 999;
+}
+
+.pdf-cursor.selected {
+    background-color: rgba(201, 76, 76, 0.3) !important;
+}
+.pdf-cursor.next {
+    background-color: rgba(0, 255, 0, 0.3) !important;
+}
+
+.pdf-cursor-mask {
+    position: absolute;
+    z-index: 998;
+}
+
+#message_from_author, #message_from_sender
+{
+	background-color: #e9e9e9;
+	border: 1px solid #555;
+	margin: 0em;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+.flex-table {
+    display:flex;
+}
+.flex-table .flex-width {
+    flex: 1;
+}
+.flex-table .fixed-width {
+    flex: none;
+    min-width: 2em;
+}
+.flex-table .fixed-line-height
+{
+   height: 5em;
+}
+
+.flex-table .fixed-line-height-small
+{
+   height: 3em;
+}
+
+.ck-editor__editable_inline {
+    min-height: 20em ;
+    min-width: 25em;
+}
+
+#param-info  div.ui-block-a .ui-bar, 
+#param-info  div.ui-block-b .ui-bar, 
+#param-info  div.ui-block-c .ui-bar
+{
+    background-color: transparent !important;
+    border: 0px solid black !important;
+}
+
+#gdrive_info {cursor: pointer}
+.drive
+{
+    width: 5em;
+    height: 5em;
+}
+.news-post
+{
+	background-color: #EEE;
+	margin: 1em;
+	padding: 1em;
+	border-radius: 0.5em;
+}
+
+.has-news span
+{
+   background-color: #F00 !important;
+}
+.toggled-on
+{
+	background-color: #0CD765 !important;
+}
+
+@media only screen and (min-width: 64.1em){
+	body:not([page="display-score-full-page"]) .ui-page {
+            width: 45em !important;
+            margin: 0 auto !important;
+            position: relative !important;
+            border-right: 0.3em #666 outset !important;
+            border-left: 0.3em #666 outset !important;
+        }
+        
+        
+   .ui-panel-dismiss-open.ui-panel-dismiss-position-right,
+   .ui-panel-dismiss-open.ui-panel-dismiss-position-left
+    { z-index: 1000 !important }
+   .ui-overlay-d{
+      background: #333;
+   }
+   #param-info {
+       width: 30em !important;
+   }
+}
+
+#main-header a, #user-info a, a.myicon {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+.my-help 
+{
+   border-width: 0px !important;
+}
+
+.grecaptcha-badge {
+   display: none;
+}
+
+.pdf-canvas
+{
+  direction: ltr;
+}
+
+#page-1-bg, #page-2-bg
+{
+   z-index: 2;
+   position: absolute;
+   top: 0px;
+   left: 0px; 
+   height:100%; 
+   width:100%;
+}
+
+#page-1-bg.unselected, #page-2-bg.unselected
+{
+   background-color:#000;
+   opacity: 0.3;
+}
+
+canvas.unselected
+{
+   height:100%; 
+   width:100%;
+   border: 5px solid transparent;
+}
+canvas.selected
+{
+   height:100%; 
+   width:100%;
+  border: 5px solid black;
+}

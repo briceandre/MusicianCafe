@@ -1,0 +1,2509 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://musician.cafe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MusicianCafe" targetNamespace="https://musician.cafe/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://musician.cafe/">
+      <xsd:element name="Login">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="username" type="xsd:string" />
+          	<xsd:element name="password" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoginResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="status" type="xsd:int" />
+          	<xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="user_infoType">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="email" type="xsd:string" minOccurs="0"
+      			maxOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+
+      		<xsd:element name="email_confirmed" type="xsd:boolean"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+
+      		<xsd:element name="storage_limit_MB" type="xsd:int"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="upload_daily_limit_MB" type="xsd:int"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="site_moderator" type="xsd:boolean"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+
+      		<xsd:element name="current_storage_MB" type="xsd:int"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="current_day_upload_MB" type="xsd:int"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+
+      		<xsd:element name="max_sample_size_MB" type="xsd:int"
+      			minOccurs="0" maxOccurs="1">
+      		</xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetSamples">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="piece_id" type="xsd:int" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSamplesResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="samples" type="tns:sample_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="loginType">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="password" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="sample_infoType">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+      		<xsd:element name="piece_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="user_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="user_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="piece_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="composer_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="is_own" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="is_common" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="is_approved" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="show_on_welcome_page"
+      			type="xsd:boolean">
+      		</xsd:element>
+      		<xsd:element name="is_favorite" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="message_to_moderator"
+      			type="xsd:string">
+      		</xsd:element>
+      		<xsd:element name="duration" type="xsd:int"></xsd:element>
+      		<xsd:element name="album_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="album_name" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetComposers">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetComposersResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="composer" type="tns:ComposerInfoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="AlbumInfoType">
+         <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"></xsd:element>
+            <xsd:element name="name" type="xsd:string"></xsd:element>
+            <xsd:element name="is_global" type="xsd:boolean"></xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="ComposerInfoType">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+      		<xsd:element name="is_global" type="xsd:boolean"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetPieceInfo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="piece_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPieceInfoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="info" type="tns:PieceInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="PieceInfoType">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+            <xsd:element name="composer_name" type="xsd:string"></xsd:element>
+            <xsd:element name="album_id" type="xsd:int"></xsd:element>
+            <xsd:element name="album_name" type="xsd:string"></xsd:element>
+            <xsd:element name="is_global" type="xsd:boolean"></xsd:element>
+            <xsd:element name="album_is_global" type="xsd:boolean" minOccurs="0" maxOccurs="1"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetPiecesAndAlbumsByComposer">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPiecesAndAlbumsByComposerResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="piece" type="tns:PieceInfoType"
+      				minOccurs="0" maxOccurs="unbounded">
+      			</xsd:element>
+      			<xsd:element name="album" type="tns:AlbumInfoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSampleStream">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="from" type="xsd:int"></xsd:element>
+      			<xsd:element name="size" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSampleStreamResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="stream" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSampleLink">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSampleLinkResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+
+
+
+      			<xsd:element name="link" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddComposer">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="name" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddComposerResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="composer_info" type="tns:ComposerInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPiece">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="name" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPieceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="piece_info" type="tns:PieceInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSamplesAndPartitionsByPiece">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="piece_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSamplesAndPartitionsByPieceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="samples" type="tns:sample_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+               <xsd:element name="partition" type="tns:partitionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UploadSample">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="piece_id" type="xsd:int"></xsd:element>
+
+      			<xsd:element name="name" type="xsd:string"></xsd:element>
+      			<xsd:element name="opus" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UploadSampleResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangePassword">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="email" type="xsd:string"></xsd:element>
+      			<xsd:element name="old_password" type="xsd:string"></xsd:element>
+      			<xsd:element name="new_password" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangePasswordResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ResetPassword">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="email" type="xsd:string"></xsd:element>
+      			<xsd:element name="captcha" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ResetPasswordResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Register">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="email" type="xsd:string"></xsd:element>
+      			<xsd:element name="password" type="xsd:string"></xsd:element>
+      			<xsd:element name="name" type="xsd:string"></xsd:element>
+      			<xsd:element name="captcha" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegisterResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConfirmEMail">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="challenge" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConfirmEMailResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestEMailConfirmation">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="email" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestEMailConfirmationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLoggedUserInfo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLoggedUserInfoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSharedSamplesAndPartitions">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSharedSamplesAndPartitionsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="samples" type="tns:sample_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+               <xsd:element name="partitions" type="tns:partitionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SuppressSample">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SuppressSampleResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleIsOwn">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+               <xsd:element name="is_own" type="xsd:boolean"></xsd:element>
+               
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleIsOwnResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleIsCommon">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="is_common" type="xsd:boolean"></xsd:element>
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleIsCommonResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSamplePiece">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+
+               <xsd:element name="piece_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSamplePieceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ApproveSampleIsCommon">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ApproveSampleIsCommonResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SuppressSampleFromCommon">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SuppressSampleFromCommonResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="is_suppressed" type="xsd:boolean" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleIsFavorite">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+               <xsd:element name="is_in_favorite" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleIsFavoriteResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleShowOnWelcomePage">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+               <xsd:element name="show_on_welcome_page" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeSampleShowOnWelcomePageResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample_info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SearchMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="member_name" type="xsd:string"></xsd:element>
+
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SearchMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeMemberIsFavorite">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="member_id" type="xsd:int"></xsd:element>
+               <xsd:element name="is_favorite" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangeMemberIsFavoriteResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteMembers">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteMembersResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="user_info" type="tns:user_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ShareSampleWithMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="member_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ShareSampleWithMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+              <xsd:element name="status" type="xsd:int"></xsd:element>
+       		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteSamplesAndPartitions">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteSamplesAndPartitionsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="samples" type="tns:sample_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+               <xsd:element name="partitions" type="tns:partitionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSamplesForModeration">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSamplesForModerationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="samples" type="tns:sample_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetNews">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetNewsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="news" type="tns:NewsType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetMessage">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="message_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetMessageResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+
+      			<xsd:element name="message" type="tns:messageType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="messageType">
+      	<xsd:sequence>
+
+      		<xsd:element name="sender_info"
+      			type="tns:user_infoType">
+      		</xsd:element>
+      		<xsd:element name="subject" type="xsd:string"></xsd:element>
+      		<xsd:element name="message" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="NewsType">
+      	<xsd:sequence>
+      		<xsd:element name="type" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					0 : new message 1 : sample share proposal
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="subject" type="xsd:string"></xsd:element>
+
+      		<xsd:element name="target_id" type="xsd:int">
+      		</xsd:element>
+
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetSharedSample">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="shared_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSharedSampleResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="sample" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="sender_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="message" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SetSharedSampleAcceptation">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="shared_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="accept" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SetSharedSampleAcceptationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionsByComposer">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionsByComposerResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:int"></xsd:element>
+      			<xsd:element name="partition" type="tns:partitionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="scrolling_infoType">
+         <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"></xsd:element>
+            <xsd:element name="name" type="xsd:string"></xsd:element>
+            <xsd:element name="pages" type="xsd:string"></xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="partitionType">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+      		<xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="composer_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="piece_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="piece_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="album_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="album_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="user_id" type="xsd:int"></xsd:element>
+      		<xsd:element name="user_name" type="xsd:string"></xsd:element>
+      		<xsd:element name="is_own" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="is_favorite" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="has_mxl" type="xsd:boolean"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetPartitionLink">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="partition_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionLinkResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="link" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionScrollings">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="partition_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionScrollingsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="scrolling" type="tns:scrolling_infoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidateComposer">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidateComposerResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MergeComposers">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_to_suppress" type="xsd:int"></xsd:element>
+               <xsd:element name="composer_to_select" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MergeComposersResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidatePiece">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="piece_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidatePieceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MergePieces">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="piece_to_suppress" type="xsd:int"></xsd:element>
+               <xsd:element name="piece_to_select" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MergePiecesResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenameComposer">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      			<xsd:element name="name" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenameComposerResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenamePiece">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="piece_id" type="xsd:int"></xsd:element>
+               <xsd:element name="name" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenamePieceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetComposerInfo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetComposerInfoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="info" type="tns:ComposerInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSampleInfo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="sample_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSampleInfoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="info" type="tns:sample_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddAlbum">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_id" type="xsd:int"></xsd:element>
+               <xsd:element name="name" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddAlbumResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="album_info" type="tns:AlbumInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidateAlbum">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="album_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidateAlbumResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MergeAlbums">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="album_to_suppress" type="xsd:int"></xsd:element>
+               <xsd:element name="album_to_select" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MergeAlbumsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenameAlbum">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="album_id" type="xsd:int"></xsd:element>
+               <xsd:element name="name" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenameAlbumResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByComposer">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="composer_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByComposerResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="album" type="tns:AlbumInfoType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumInfo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="album_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumInfoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="info" type="tns:AlbumInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangePieceAlbum">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      		   <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="piece_id" type="xsd:int"></xsd:element>
+
+               <xsd:element name="album_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangePieceAlbumResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="piece_info" type="tns:PieceInfoType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPiecesByAlbum">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="album_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPiecesByAlbumResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="piece" type="tns:PieceInfoType"
+                  minOccurs="0" maxOccurs="unbounded">
+               </xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UploadPartition">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="login" type="tns:loginType"></xsd:element>
+      			<xsd:element name="piece_id" type="xsd:int"></xsd:element>
+
+      			<xsd:element name="name" type="xsd:string"></xsd:element>
+               <xsd:element name="pdf" type="xsd:string"></xsd:element>
+      			<xsd:element name="scrolling_name"
+      				type="xsd:string">
+      			</xsd:element>
+               <xsd:element name="scrolling" type="xsd:string"></xsd:element>
+               <xsd:element name="mxl_data" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="mxl_info" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UploadPartitionResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="partition_info" type="tns:partitionType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SuppressPartition">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="partition_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SuppressPartitionResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangePartitionIsFavorite">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="partition_id" type="xsd:int"></xsd:element>
+               <xsd:element name="is_in_favorite" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChangePartitionIsFavoriteResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="partition_info" type="tns:partitionType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SharePartitionWithMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      		   <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="partition_id" type="xsd:int"></xsd:element>
+               <xsd:element name="member_id" type="xsd:int"></xsd:element>
+               <xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SharePartitionWithMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+              <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SetSharedPartitionAccepted">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="shared_id" type="xsd:int"></xsd:element>
+               <xsd:element name="accept" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SetSharedPartitionAcceptedResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSharedPartition">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="shared_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetSharedPartitionResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="partition" type="tns:partitionType" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="sender_info" type="tns:user_infoType" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="message" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPartitionVariant">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="original_partition_id" type="xsd:int"></xsd:element>
+               
+               <xsd:element name="name" type="xsd:string"></xsd:element>
+               <xsd:element name="pdf" type="xsd:string"></xsd:element>
+               <xsd:element name="scrolling_name"
+                  type="xsd:string">
+               </xsd:element>
+               <xsd:element name="scrolling" type="xsd:string"></xsd:element>
+               <xsd:element name="mxl_info" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPartitionVariantResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="partition_info" type="tns:partitionType" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionMXLLink">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="login" type="tns:loginType"></xsd:element>
+               <xsd:element name="partition_id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPartitionMXLLinkResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+               <xsd:element name="status" type="xsd:int"></xsd:element>
+               <xsd:element name="MXL_link" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+               <xsd:element name="MXL_info" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginRequest">
+    <wsdl:part element="tns:Login" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="LoginResponse">
+    <wsdl:part element="tns:LoginResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetSamplesRequest">
+  	<wsdl:part name="parameters" element="tns:GetSamples"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSamplesResponse">
+  	<wsdl:part name="parameters" element="tns:GetSamplesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetComposersRequest">
+  	<wsdl:part name="parameters" element="tns:GetComposers"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetComposersResponse">
+  	<wsdl:part name="parameters" element="tns:GetComposersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPieceInfoRequest">
+  	<wsdl:part name="parameters" element="tns:GetPieceInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPieceInfoResponse">
+  	<wsdl:part name="parameters" element="tns:GetPieceInfoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPiecesAndAlbumsByComposerRequest">
+  	<wsdl:part name="parameters" element="tns:GetPiecesAndAlbumsByComposer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPiecesAndAlbumsByComposerResponse">
+  	<wsdl:part name="parameters" element="tns:GetPiecesAndAlbumsByComposerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSampleStreamRequest">
+  	<wsdl:part name="parameters" element="tns:GetSampleStream"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSampleStreamResponse">
+  	<wsdl:part name="parameters" element="tns:GetSampleStreamResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSampleLinkRequest">
+  	<wsdl:part name="parameters" element="tns:GetSampleLink"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSampleLinkResponse">
+  	<wsdl:part name="parameters" element="tns:GetSampleLinkResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddComposerRequest">
+  	<wsdl:part name="parameters" element="tns:AddComposer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddComposerResponse">
+  	<wsdl:part name="parameters" element="tns:AddComposerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPieceRequest">
+  	<wsdl:part name="parameters" element="tns:AddPiece"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPieceResponse">
+  	<wsdl:part name="parameters" element="tns:AddPieceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSamplesAndPartitionsByPieceRequest">
+  	<wsdl:part name="parameters" element="tns:GetSamplesAndPartitionsByPiece"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSamplesAndPartitionsByPieceResponse">
+  	<wsdl:part name="parameters" element="tns:GetSamplesAndPartitionsByPieceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadSampleRequest">
+  	<wsdl:part name="parameters" element="tns:UploadSample"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadSampleResponse">
+  	<wsdl:part name="parameters" element="tns:UploadSampleResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordRequest">
+  	<wsdl:part name="parameters" element="tns:ChangePassword"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordResponse">
+  	<wsdl:part name="parameters" element="tns:ChangePasswordResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordRequest">
+  	<wsdl:part name="parameters" element="tns:ResetPassword"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordResponse">
+  	<wsdl:part name="parameters" element="tns:ResetPasswordResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegisterRequest">
+  	<wsdl:part name="parameters" element="tns:Register"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegisterResponse">
+  	<wsdl:part name="parameters" element="tns:RegisterResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConfirmEMailRequest">
+  	<wsdl:part name="parameters" element="tns:ConfirmEMail"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConfirmEMailResponse">
+  	<wsdl:part name="parameters" element="tns:ConfirmEMailResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RequestEMailConfirmationRequest">
+  	<wsdl:part name="parameters" element="tns:RequestEMailConfirmation"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RequestEMailConfirmationResponse">
+  	<wsdl:part name="parameters" element="tns:RequestEMailConfirmationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoggedUserInfoRequest">
+  	<wsdl:part name="parameters" element="tns:GetLoggedUserInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoggedUserInfoResponse">
+  	<wsdl:part name="parameters" element="tns:GetLoggedUserInfoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSharedSamplesAndPartitionsRequest">
+  	<wsdl:part name="parameters" element="tns:GetSharedSamplesAndPartitions"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSharedSamplesAndPartitionsResponse">
+  	<wsdl:part name="parameters" element="tns:GetSharedSamplesAndPartitionsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuppressSampleRequest">
+  	<wsdl:part name="parameters" element="tns:SuppressSample"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuppressSampleResponse">
+  	<wsdl:part name="parameters" element="tns:SuppressSampleResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleIsOwnRequest">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleIsOwn"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleIsOwnResponse">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleIsOwnResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleIsCommonRequest">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleIsCommon"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleIsCommonResponse">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleIsCommonResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSamplePieceRequest">
+  	<wsdl:part name="parameters" element="tns:ChangeSamplePiece"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSamplePieceResponse">
+  	<wsdl:part name="parameters" element="tns:ChangeSamplePieceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApproveSampleIsCommonRequest">
+  	<wsdl:part name="parameters" element="tns:ApproveSampleIsCommon"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApproveSampleIsCommonResponse">
+  	<wsdl:part name="parameters" element="tns:ApproveSampleIsCommonResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuppressSampleFromCommonRequest">
+  	<wsdl:part name="parameters" element="tns:SuppressSampleFromCommon"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuppressSampleFromCommonResponse">
+  	<wsdl:part name="parameters" element="tns:SuppressSampleFromCommonResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleIsFavoriteRequest">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleIsFavorite"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleIsFavoriteResponse">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleIsFavoriteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleShowOnWelcomePageRequest">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleShowOnWelcomePage"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSampleShowOnWelcomePageResponse">
+  	<wsdl:part name="parameters" element="tns:ChangeSampleShowOnWelcomePageResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SearchMemberRequest">
+  	<wsdl:part name="parameters" element="tns:SearchMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SearchMemberResponse">
+  	<wsdl:part name="parameters" element="tns:SearchMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeMemberIsFavoriteRequest">
+  	<wsdl:part name="parameters" element="tns:ChangeMemberIsFavorite"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeMemberIsFavoriteResponse">
+  	<wsdl:part name="parameters" element="tns:ChangeMemberIsFavoriteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFavoriteMembersRequest">
+  	<wsdl:part name="parameters" element="tns:GetFavoriteMembers"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFavoriteMembersResponse">
+  	<wsdl:part name="parameters" element="tns:GetFavoriteMembersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ShareSampleWithMemberRequest">
+  	<wsdl:part name="parameters" element="tns:ShareSampleWithMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ShareSampleWithMemberResponse">
+  	<wsdl:part name="parameters" element="tns:ShareSampleWithMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFavoriteSamplesAndPartitionsRequest">
+  	<wsdl:part name="parameters" element="tns:GetFavoriteSamplesAndPartitions"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFavoriteSamplesAndPartitionsResponse">
+  	<wsdl:part name="parameters" element="tns:GetFavoriteSamplesAndPartitionsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSamplesForModerationRequest">
+  	<wsdl:part name="parameters" element="tns:GetSamplesForModeration"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSamplesForModerationResponse">
+  	<wsdl:part name="parameters" element="tns:GetSamplesForModerationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNewsRequest">
+  	<wsdl:part name="parameters" element="tns:GetNews"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNewsResponse">
+  	<wsdl:part name="parameters" element="tns:GetNewsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMessageRequest">
+  	<wsdl:part name="parameters" element="tns:GetMessage"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMessageResponse">
+  	<wsdl:part name="parameters" element="tns:GetMessageResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSharedSampleRequest">
+  	<wsdl:part name="parameters" element="tns:GetSharedSample"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSharedSampleResponse">
+  	<wsdl:part name="parameters" element="tns:GetSharedSampleResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetSharedSampleAcceptationRequest">
+  	<wsdl:part name="parameters" element="tns:SetSharedSampleAcceptation"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetSharedSampleAcceptationResponse">
+  	<wsdl:part name="parameters" element="tns:SetSharedSampleAcceptationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionsByComposerRequest">
+  	<wsdl:part name="parameters" element="tns:GetPartitionsByComposer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionsByComposerResponse">
+  	<wsdl:part name="parameters" element="tns:GetPartitionsByComposerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionLinkRequest">
+  	<wsdl:part name="parameters" element="tns:GetPartitionLink"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionLinkResponse">
+  	<wsdl:part name="parameters" element="tns:GetPartitionLinkResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionScrollingsRequest">
+  	<wsdl:part name="parameters" element="tns:GetPartitionScrollings"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionScrollingsResponse">
+  	<wsdl:part name="parameters" element="tns:GetPartitionScrollingsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateComposerRequest">
+  	<wsdl:part name="parameters" element="tns:ValidateComposer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateComposerResponse">
+  	<wsdl:part name="parameters" element="tns:ValidateComposerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MergeComposersRequest">
+  	<wsdl:part name="parameters" element="tns:MergeComposers"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MergeComposersResponse">
+  	<wsdl:part name="parameters" element="tns:MergeComposersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidatePieceRequest">
+  	<wsdl:part name="parameters" element="tns:ValidatePiece"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidatePieceResponse">
+  	<wsdl:part name="parameters" element="tns:ValidatePieceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MergePiecesRequest">
+  	<wsdl:part name="parameters" element="tns:MergePieces"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MergePiecesResponse">
+  	<wsdl:part name="parameters" element="tns:MergePiecesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RenameComposerRequest">
+  	<wsdl:part name="parameters" element="tns:RenameComposer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RenameComposerResponse">
+  	<wsdl:part name="parameters" element="tns:RenameComposerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RenamePieceRequest">
+  	<wsdl:part name="parameters" element="tns:RenamePiece"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RenamePieceResponse">
+  	<wsdl:part name="parameters" element="tns:RenamePieceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetComposerInfoRequest">
+  	<wsdl:part name="parameters" element="tns:GetComposerInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetComposerInfoResponse">
+  	<wsdl:part name="parameters" element="tns:GetComposerInfoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSampleInfoRequest">
+  	<wsdl:part name="parameters" element="tns:GetSampleInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSampleInfoResponse">
+  	<wsdl:part name="parameters" element="tns:GetSampleInfoResponse"></wsdl:part>
+  </wsdl:message>  <wsdl:message name="AddAlbumRequest">
+  	<wsdl:part name="parameters" element="tns:AddAlbum"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAlbumResponse">
+  	<wsdl:part name="parameters" element="tns:AddAlbumResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateAlbumRequest">
+  	<wsdl:part name="parameters" element="tns:ValidateAlbum"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateAlbumResponse">
+  	<wsdl:part name="parameters" element="tns:ValidateAlbumResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MergeAlbumsRequest">
+  	<wsdl:part name="parameters" element="tns:MergeAlbums"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MergeAlbumsResponse">
+  	<wsdl:part name="parameters" element="tns:MergeAlbumsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RenameAlbumRequest">
+  	<wsdl:part name="parameters" element="tns:RenameAlbum"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RenameAlbumResponse">
+  	<wsdl:part name="parameters" element="tns:RenameAlbumResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsByComposerRequest">
+  	<wsdl:part name="parameters" element="tns:GetAlbumsByComposer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsByComposerResponse">
+  	<wsdl:part name="parameters" element="tns:GetAlbumsByComposerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlbumInfoRequest">
+  	<wsdl:part name="parameters" element="tns:GetAlbumInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlbumInfoResponse">
+  	<wsdl:part name="parameters" element="tns:GetAlbumInfoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePieceAlbumRequest">
+  	<wsdl:part name="parameters" element="tns:ChangePieceAlbum"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePieceAlbumResponse">
+  	<wsdl:part name="parameters" element="tns:ChangePieceAlbumResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPiecesByAlbumRequest">
+  	<wsdl:part name="parameters" element="tns:GetPiecesByAlbum"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPiecesByAlbumResponse">
+  	<wsdl:part name="parameters" element="tns:GetPiecesByAlbumResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadPartitionRequest">
+  	<wsdl:part name="parameters" element="tns:UploadPartition"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadPartitionResponse">
+  	<wsdl:part name="parameters" element="tns:UploadPartitionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuppressPartitionRequest">
+  	<wsdl:part name="parameters" element="tns:SuppressPartition"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuppressPartitionResponse">
+  	<wsdl:part name="parameters" element="tns:SuppressPartitionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePartitionIsFavoriteRequest">
+  	<wsdl:part name="parameters" element="tns:ChangePartitionIsFavorite"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePartitionIsFavoriteResponse">
+  	<wsdl:part name="parameters" element="tns:ChangePartitionIsFavoriteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SharePartitionWithMemberRequest">
+  	<wsdl:part name="parameters" element="tns:SharePartitionWithMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SharePartitionWithMemberResponse">
+  	<wsdl:part name="parameters" element="tns:SharePartitionWithMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetSharedPartitionAcceptedRequest">
+  	<wsdl:part name="parameters" element="tns:SetSharedPartitionAccepted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetSharedPartitionAcceptedResponse">
+  	<wsdl:part name="parameters" element="tns:SetSharedPartitionAcceptedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSharedPartitionRequest">
+  	<wsdl:part name="parameters" element="tns:GetSharedPartition"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSharedPartitionResponse">
+  	<wsdl:part name="parameters" element="tns:GetSharedPartitionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPartitionVariantRequest">
+  	<wsdl:part name="parameters" element="tns:AddPartitionVariant"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPartitionVariantResponse">
+  	<wsdl:part name="parameters" element="tns:AddPartitionVariantResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionMXLLinkRequest">
+  	<wsdl:part name="parameters" element="tns:GetPartitionMXLLink"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPartitionMXLLinkResponse">
+  	<wsdl:part name="parameters" element="tns:GetPartitionMXLLinkResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MusicianCafe">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginRequest"/>
+      <wsdl:output message="tns:LoginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSamples">
+    	<wsdl:input message="tns:GetSamplesRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSamplesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComposers">
+    	<wsdl:input message="tns:GetComposersRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetComposersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPieceInfo">
+    	<wsdl:input message="tns:GetPieceInfoRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetPieceInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPiecesAndAlbumsByComposer">
+    	<wsdl:input message="tns:GetPiecesAndAlbumsByComposerRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetPiecesAndAlbumsByComposerResponse"></wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="GetSampleLink">
+    	<wsdl:input message="tns:GetSampleLinkRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSampleLinkResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComposer">
+    	<wsdl:input message="tns:AddComposerRequest"></wsdl:input>
+    	<wsdl:output message="tns:AddComposerResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPiece">
+    	<wsdl:input message="tns:AddPieceRequest"></wsdl:input>
+    	<wsdl:output message="tns:AddPieceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSamplesAndPartitionsByPiece">
+    	<wsdl:input message="tns:GetSamplesAndPartitionsByPieceRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSamplesAndPartitionsByPieceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadSample">
+    	<wsdl:input message="tns:UploadSampleRequest"></wsdl:input>
+    	<wsdl:output message="tns:UploadSampleResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+    	<wsdl:input message="tns:ChangePasswordRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangePasswordResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+    	<wsdl:input message="tns:ResetPasswordRequest"></wsdl:input>
+    	<wsdl:output message="tns:ResetPasswordResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+    	<wsdl:input message="tns:RegisterRequest"></wsdl:input>
+    	<wsdl:output message="tns:RegisterResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmEMail">
+    	<wsdl:input message="tns:ConfirmEMailRequest"></wsdl:input>
+    	<wsdl:output message="tns:ConfirmEMailResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestEMailConfirmation">
+    	<wsdl:input message="tns:RequestEMailConfirmationRequest"></wsdl:input>
+    	<wsdl:output message="tns:RequestEMailConfirmationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedUserInfo">
+    	<wsdl:input message="tns:GetLoggedUserInfoRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetLoggedUserInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSharedSamplesAndPartitions">
+    	<wsdl:input message="tns:GetSharedSamplesAndPartitionsRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSharedSamplesAndPartitionsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuppressSample">
+    	<wsdl:documentation>Can only be performed by owner of sample, and on a sample that has not been aproved by moderator as</wsdl:documentation>
+    	<wsdl:input message="tns:SuppressSampleRequest"></wsdl:input>
+    	<wsdl:output message="tns:SuppressSampleResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSampleIsOwn">
+    	<wsdl:input message="tns:ChangeSampleIsOwnRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangeSampleIsOwnResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSampleIsCommon">
+    	<wsdl:input message="tns:ChangeSampleIsCommonRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangeSampleIsCommonResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSamplePiece">
+    	<wsdl:input message="tns:ChangeSamplePieceRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangeSamplePieceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveSampleIsCommon">
+    	<wsdl:input message="tns:ApproveSampleIsCommonRequest"></wsdl:input>
+    	<wsdl:output message="tns:ApproveSampleIsCommonResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuppressSampleFromCommon">
+    	<wsdl:input message="tns:SuppressSampleFromCommonRequest"></wsdl:input>
+    	<wsdl:output message="tns:SuppressSampleFromCommonResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSampleIsFavorite">
+    	<wsdl:input message="tns:ChangeSampleIsFavoriteRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangeSampleIsFavoriteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSampleShowOnWelcomePage">
+    	<wsdl:input message="tns:ChangeSampleShowOnWelcomePageRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangeSampleShowOnWelcomePageResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMember">
+    	<wsdl:input message="tns:SearchMemberRequest"></wsdl:input>
+    	<wsdl:output message="tns:SearchMemberResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMemberIsFavorite">
+    	<wsdl:input message="tns:ChangeMemberIsFavoriteRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangeMemberIsFavoriteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFavoriteMembers">
+    	<wsdl:input message="tns:GetFavoriteMembersRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetFavoriteMembersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareSampleWithMember">
+    	<wsdl:input message="tns:ShareSampleWithMemberRequest"></wsdl:input>
+    	<wsdl:output message="tns:ShareSampleWithMemberResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFavoriteSamplesAndPartitions">
+    	<wsdl:input message="tns:GetFavoriteSamplesAndPartitionsRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetFavoriteSamplesAndPartitionsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSamplesForModeration">
+    	<wsdl:input message="tns:GetSamplesForModerationRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSamplesForModerationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+    	<wsdl:input message="tns:GetNewsRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetNewsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessage">
+    	<wsdl:input message="tns:GetMessageRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetMessageResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSharedSample">
+    	<wsdl:input message="tns:GetSharedSampleRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSharedSampleResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSharedSampleAcceptation">
+    	<wsdl:input message="tns:SetSharedSampleAcceptationRequest"></wsdl:input>
+    	<wsdl:output message="tns:SetSharedSampleAcceptationResponse"></wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="GetPartitionLink">
+    	<wsdl:input message="tns:GetPartitionLinkRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetPartitionLinkResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartitionScrollings">
+    	<wsdl:input message="tns:GetPartitionScrollingsRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetPartitionScrollingsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateComposer">
+    	<wsdl:input message="tns:ValidateComposerRequest"></wsdl:input>
+    	<wsdl:output message="tns:ValidateComposerResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MergeComposers">
+    	<wsdl:input message="tns:MergeComposersRequest"></wsdl:input>
+    	<wsdl:output message="tns:MergeComposersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePiece">
+    	<wsdl:input message="tns:ValidatePieceRequest"></wsdl:input>
+    	<wsdl:output message="tns:ValidatePieceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MergePieces">
+    	<wsdl:input message="tns:MergePiecesRequest"></wsdl:input>
+    	<wsdl:output message="tns:MergePiecesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenameComposer">
+    	<wsdl:input message="tns:RenameComposerRequest"></wsdl:input>
+    	<wsdl:output message="tns:RenameComposerResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenamePiece">
+    	<wsdl:input message="tns:RenamePieceRequest"></wsdl:input>
+    	<wsdl:output message="tns:RenamePieceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComposerInfo">
+    	<wsdl:input message="tns:GetComposerInfoRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetComposerInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSampleInfo">
+    	<wsdl:input message="tns:GetSampleInfoRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSampleInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAlbum">
+    	<wsdl:input message="tns:AddAlbumRequest"></wsdl:input>
+    	<wsdl:output message="tns:AddAlbumResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateAlbum">
+    	<wsdl:input message="tns:ValidateAlbumRequest"></wsdl:input>
+    	<wsdl:output message="tns:ValidateAlbumResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MergeAlbums">
+    	<wsdl:input message="tns:MergeAlbumsRequest"></wsdl:input>
+    	<wsdl:output message="tns:MergeAlbumsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenameAlbum">
+    	<wsdl:input message="tns:RenameAlbumRequest"></wsdl:input>
+    	<wsdl:output message="tns:RenameAlbumResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumsByComposer">
+    	<wsdl:input message="tns:GetAlbumsByComposerRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetAlbumsByComposerResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumInfo">
+    	<wsdl:input message="tns:GetAlbumInfoRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetAlbumInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePieceAlbum">
+    	<wsdl:input message="tns:ChangePieceAlbumRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangePieceAlbumResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPiecesByAlbum">
+    	<wsdl:input message="tns:GetPiecesByAlbumRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetPiecesByAlbumResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPartition">
+    	<wsdl:input message="tns:UploadPartitionRequest"></wsdl:input>
+    	<wsdl:output message="tns:UploadPartitionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuppressPartition">
+    	<wsdl:input message="tns:SuppressPartitionRequest"></wsdl:input>
+    	<wsdl:output message="tns:SuppressPartitionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePartitionIsFavorite">
+    	<wsdl:input message="tns:ChangePartitionIsFavoriteRequest"></wsdl:input>
+    	<wsdl:output message="tns:ChangePartitionIsFavoriteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SharePartitionWithMember">
+    	<wsdl:input message="tns:SharePartitionWithMemberRequest"></wsdl:input>
+    	<wsdl:output message="tns:SharePartitionWithMemberResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSharedPartitionAccepted">
+    	<wsdl:input message="tns:SetSharedPartitionAcceptedRequest"></wsdl:input>
+    	<wsdl:output message="tns:SetSharedPartitionAcceptedResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSharedPartition">
+    	<wsdl:input message="tns:GetSharedPartitionRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetSharedPartitionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPartitionVariant">
+    	<wsdl:input message="tns:AddPartitionVariantRequest"></wsdl:input>
+    	<wsdl:output message="tns:AddPartitionVariantResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartitionMXLLink">
+    	<wsdl:input message="tns:GetPartitionMXLLinkRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetPartitionMXLLinkResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MusicianCafeSOAP" type="tns:MusicianCafe">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="Login">
+  		<soap:operation soapAction="https://musician.cafe/Login" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GetSamples">
+  		<soap:operation soapAction="https://musician.cafe/GetSamples" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GetComposers">
+  		<soap:operation
+  			soapAction="https://musician.cafe/GetComposers" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GetPieceInfo">
+  		<soap:operation
+  			soapAction="https://musician.cafe/GetPieceInfo" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GetPiecesAndAlbumsByComposer">
+  		<soap:operation
+  			soapAction="https://musician.cafe/GetPiecesAndAlbumsByComposer" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+   <wsdl:operation name="GetSampleLink">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSampleLink" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="AddComposer">
+      <soap:operation
+         soapAction="https://musician.cafe/AddComposer" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="AddPiece">
+      <soap:operation
+         soapAction="https://musician.cafe/AddPiece" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetSamplesAndPartitionsByPiece">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSamplesAndPartitionsByPiece" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="UploadSample">
+      <soap:operation
+         soapAction="https://musician.cafe/UploadSample" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangePassword">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangePassword" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ResetPassword">
+      <soap:operation
+         soapAction="https://musician.cafe/ResetPassword" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="Register">
+      <soap:operation
+         soapAction="https://musician.cafe/Register" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ConfirmEMail">
+      <soap:operation
+         soapAction="https://musician.cafe/ConfirmEMail" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="RequestEMailConfirmation">
+      <soap:operation
+         soapAction="https://musician.cafe/RequestEMailConfirmation" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetLoggedUserInfo">
+      <soap:operation
+         soapAction="https://musician.cafe/GetLoggedUserInfo" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetSharedSamplesAndPartitions">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSharedSamplesAndPartitions" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SuppressSample">
+      <soap:operation
+         soapAction="https://musician.cafe/SuppressSample" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangeSampleIsOwn">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangeSampleIsOwn" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangeSampleIsCommon">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangeSampleIsCommon" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangeSamplePiece">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangeSamplePiece" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ApproveSampleIsCommon">
+      <soap:operation
+         soapAction="https://musician.cafe/ApproveSampleIsCommon" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SuppressSampleFromCommon">
+      <soap:operation
+         soapAction="https://musician.cafe/SuppressSampleFromCommon" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangeSampleIsFavorite">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangeSampleIsFavorite" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SearchMember">
+      <soap:operation
+         soapAction="https://musician.cafe/SearchMember" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangeMemberIsFavorite">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangeMemberIsFavorite" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetFavoriteMembers">
+      <soap:operation
+         soapAction="https://musician.cafe/GetFavoriteMembers" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ShareSampleWithMember">
+      <soap:operation
+         soapAction="https://musician.cafe/ShareSampleWithMember" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangeSampleShowOnWelcomePage">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangeSampleShowOnWelcomePage" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetFavoriteSamplesAndPartitions">
+      <soap:operation
+         soapAction="https://musician.cafe/GetFavoriteSamplesAndPartitions" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetSamplesForModeration">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSamplesForModeration" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetNews">
+      <soap:operation
+         soapAction="https://musician.cafe/GetNews" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetMessage">
+      <soap:operation
+         soapAction="https://musician.cafe/GetMessage" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetSharedSample">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSharedSample" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SetSharedSampleAcceptation">
+      <soap:operation
+         soapAction="https://musician.cafe/SetSharedSampleAcceptation" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetPartitionLink">
+      <soap:operation
+         soapAction="https://musician.cafe/GetPartitionLink" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetPartitionScrollings">
+      <soap:operation
+         soapAction="https://musician.cafe/GetPartitionScrollings" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ValidateComposer">
+      <soap:operation
+         soapAction="https://musician.cafe/ValidateComposer" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="MergeComposers">
+      <soap:operation
+         soapAction="https://musician.cafe/MergeComposers" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ValidatePiece">
+      <soap:operation
+         soapAction="https://musician.cafe/ValidatePiece" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="MergePieces">
+      <soap:operation
+         soapAction="https://musician.cafe/MergePieces" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="RenameComposer">
+      <soap:operation
+         soapAction="https://musician.cafe/RenameComposer" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="RenamePiece">
+      <soap:operation
+         soapAction="https://musician.cafe/RenamePiece" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetComposerInfo">
+      <soap:operation
+         soapAction="https://musician.cafe/GetComposerInfo" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetSampleInfo">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSampleInfo" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="AddAlbum">
+      <soap:operation
+         soapAction="https://musician.cafe/AddAlbum" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="MergeAlbums">
+      <soap:operation
+         soapAction="https://musician.cafe/MergeAlbums" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ValidateAlbum">
+      <soap:operation
+         soapAction="https://musician.cafe/ValidateAlbum" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="RenameAlbum">
+      <soap:operation
+         soapAction="https://musician.cafe/RenameAlbum" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetAlbumsByComposer">
+      <soap:operation
+         soapAction="https://musician.cafe/GetAlbumsByComposer" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetAlbumInfo">
+      <soap:operation
+         soapAction="https://musician.cafe/GetAlbumInfo" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangePieceAlbum">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangePieceAlbum" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetPiecesByAlbum">
+      <soap:operation
+         soapAction="https://musician.cafe/GetPiecesByAlbum" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="UploadPartition">
+      <soap:operation
+         soapAction="https://musician.cafe/UploadPartition" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SuppressPartition">
+      <soap:operation
+         soapAction="https://musician.cafe/SuppressPartition" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="ChangePartitionIsFavorite">
+      <soap:operation
+         soapAction="https://musician.cafe/ChangePartitionIsFavorite" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SharePartitionWithMember">
+      <soap:operation
+         soapAction="https://musician.cafe/SharePartitionWithMember" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="SetSharedPartitionAccepted">
+      <soap:operation
+         soapAction="https://musician.cafe/SetSharedPartitionAccepted" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetSharedPartition">
+      <soap:operation
+         soapAction="https://musician.cafe/GetSharedPartition" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="AddPartitionVariant">
+      <soap:operation
+         soapAction="https://musician.cafe/AddPartitionVariant" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+   <wsdl:operation name="GetPartitionMXLLink">
+      <soap:operation
+         soapAction="https://musician.cafe/GetPartitionMXLLink" />
+      <wsdl:input>
+         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body use="literal" />
+      </wsdl:output>
+   </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MusicianCafe">
+    <wsdl:port binding="tns:MusicianCafeSOAP" name="MusicianCafeSOAP">
+      <soap:address location="https://www.musician.cafe/soap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
